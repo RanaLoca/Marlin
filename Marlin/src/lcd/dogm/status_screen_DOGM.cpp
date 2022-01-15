@@ -57,7 +57,7 @@
   #include "../../feature/cooler.h"
 #endif
 
-#if DO_DRAW_AMMETER
+#if ENABLED(I2C_AMMETER)
   #include "../../feature/ammeter.h"
 #endif
 
