@@ -1368,11 +1368,7 @@
 
 // The size of the printable area
 #define X_BED_SIZE 220
-<<<<<<< HEAD
 #define Y_BED_SIZE 190
-=======
-#define Y_BED_SIZE 220
->>>>>>> parent of 70e4a475b9 (Merge remote-tracking branch 'upstream/bugfix-2.0.x' into bugfix-2.0.x)
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1858,13 +1854,8 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA"
-<<<<<<< HEAD
 #define PREHEAT_1_TEMP_HOTEND 200
 #define PREHEAT_1_TEMP_BED     50
-=======
-#define PREHEAT_1_TEMP_HOTEND 185
-#define PREHEAT_1_TEMP_BED     45
->>>>>>> parent of 70e4a475b9 (Merge remote-tracking branch 'upstream/bugfix-2.0.x' into bugfix-2.0.x)
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
