@@ -582,6 +582,16 @@ namespace Language_en {
     LSTR MSG_INFO_PRINT_TIME              = _UxGT("Total Print Time");
     LSTR MSG_INFO_PRINT_LONGEST           = _UxGT("Longest Job Time");
     LSTR MSG_INFO_PRINT_FILAMENT          = _UxGT("Extruded Total");
+    LSTR MSG_COLORS_GET                   = _UxGT("Get Color");
+    LSTR MSG_COLORS_SELECT                = _UxGT("Select Colors");
+    LSTR MSG_COLORS_APPLIED               = _UxGT("Colors applied");
+    LSTR MSG_COLORS_RED                   = _UxGT("Red");
+    LSTR MSG_COLORS_GREEN                 = _UxGT("Green");
+    LSTR MSG_COLORS_BLUE                  = _UxGT("Blue");
+    LSTR MSG_COLORS_WHITE                 = _UxGT("White");
+    LSTR MSG_UI_LANGUAGE                  = _UxGT("UI Language");
+    LSTR MSG_SOUND_ENABLE                 = _UxGT("Enable sound");
+    LSTR MSG_LOCKSCREEN                   = _UxGT("Lock Screen");
   #else
     LSTR MSG_INFO_PRINT_COUNT             = _UxGT("Prints");
     LSTR MSG_INFO_COMPLETED_PRINTS        = _UxGT("Completed");

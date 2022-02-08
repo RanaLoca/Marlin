@@ -242,8 +242,8 @@ public:
     }
   #endif
 
-  #if HAS_LCD_MENU
-    static inline void enable_with_dir(const bool reverse) {
+  #if HAS_MARLINUI_MENU
+    static void enable_with_dir(const bool reverse) {
       isReady = true;
       const uint8_t ocr = TERN(SPINDLE_LASER_USE_PWM, upower_to_ocr(menuPower), 255);
       if (menuPower)
@@ -279,7 +279,7 @@ public:
       }
     #endif
 
-  #endif // HAS_LCD_MENU
+  #endif // HAS_MARLINUI_MENU
 
   #if ENABLED(LASER_POWER_INLINE)
     /**

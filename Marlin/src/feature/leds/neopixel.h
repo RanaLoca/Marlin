@@ -63,7 +63,13 @@
 #endif
 
 // ------------------------
-// Function prototypes
+// Types
+// ------------------------
+
+typedef IF<(TERN0(NEOPIXEL_LED, NEOPIXEL_PIXELS > 127)), int16_t, int8_t>::type pixel_index_t;
+
+// ------------------------
+// Classes
 // ------------------------
 
 class Marlin_NeoPixel {

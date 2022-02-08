@@ -34,7 +34,7 @@
 #if ENABLED(DWIN_CREALITY_LCD)
   #include "../lcd/e3v2/creality/dwin.h"
 #elif ENABLED(DWIN_CREALITY_LCD_ENHANCED)
-  #include "../lcd/e3v2/enhanced/dwin.h"
+  #include "../lcd/e3v2/proui/dwin.h"
 #endif
 
 #include "../module/planner.h"        // for synchronize
@@ -331,11 +331,8 @@ void CardReader::printListing(
         else {
           SERIAL_ECHO(p.fileSize);
           SERIAL_CHAR(' ');
-          if (prependLong) {
-            SERIAL_ECHO(prependLong);
-            SERIAL_CHAR('/');
-          }
-          SERIAL_ECHOLN(longFilename[0] ? longFilename : "???");
+          if (prependLong) { SERIAL_ECHO(prependLong); SERIAL_CHAR('/'); }
+          SERIAL_ECHO(longFilename[0] ? longFilename : filename);
         }
       #endif
     }
@@ -385,9 +382,9 @@ void CardReader::ls(TERN_(LONG_FILENAME_HOST_SUPPORT, bool includeLongNames/*=fa
       diveDir.rewind();
       selectByName(diveDir, segment);
 
-      // Print /LongNamePart to serial output
+      // Print /LongNamePart to serial output or the short name if not available
       SERIAL_CHAR('/');
-      SERIAL_ECHO(longFilename[0] ? longFilename : "???");
+      SERIAL_ECHO(longFilename[0] ? longFilename : filename);
 
       // If the filename was printed then that's it
       if (!flag.filenameIsDir) break;
