@@ -44,7 +44,6 @@
 #define ICON_Cancel               ICON_StockConfiguration
 #define ICON_CustomPreheat        ICON_SetEndTemp
 #define ICON_Error                ICON_TempTooHigh
-#define ICON_ESDiag               ICON_Info
 #define ICON_ExtrudeMinT          ICON_HotendTemp
 #define ICON_FilLoad              ICON_WriteEEPROM
 #define ICON_FilMan               ICON_ResumeEEPROM
@@ -94,7 +93,6 @@
 #define ICON_ProbeOffsetY         ICON_StepY
 #define ICON_ProbeOffsetZ         ICON_StepZ
 #define ICON_ProbeSet             ICON_SetEndTemp
-#define ICON_ProbeStow            ICON_SetEndTemp
 #define ICON_ProbeTest            ICON_SetEndTemp
 #define ICON_ProbeZSpeed          ICON_MaxSpeedZ
 #define ICON_Pwrlossr             ICON_Motion
@@ -107,11 +105,25 @@
 #define ICON_CaseLight            ICON_Motion
 #define ICON_LedControl           ICON_Motion
 
-// Extended and default UI Colors
-#define Color_Black           0
-#define Color_Green           RGB(0,63,0)
-#define Color_Aqua            RGB(0,63,31)
-#define Color_Blue            RGB(0,0,31)
+// Default UI Colors
+#define Def_Background_Color  Color_Bg_Black
+#define Def_Cursor_color      Rectangle_Color
+#define Def_TitleBg_color     Color_Bg_Blue
+#define Def_TitleTxt_color    Color_White
+#define Def_Text_Color        Color_White
+#define Def_Selected_Color    Select_Color
+#define Def_SplitLine_Color   Line_Color
+#define Def_Highlight_Color   Color_White
+#define Def_StatusBg_Color    RGB(0,20,20)
+#define Def_StatusTxt_Color   Color_Yellow
+#define Def_PopupBg_color     Color_Bg_Window
+#define Def_PopupTxt_Color    Popup_Text_Color
+#define Def_AlertBg_Color     Color_Bg_Red
+#define Def_AlertTxt_Color    Color_Yellow
+#define Def_PercentTxt_Color  Percent_Color
+#define Def_Barfill_Color     BarFill_Color
+#define Def_Indicator_Color   Color_White
+#define Def_Coordinate_Color   Color_White
 
 // UI element defines and constants
 #define DWIN_FONT_MENU font8x16
@@ -141,8 +153,8 @@ constexpr uint16_t TITLE_HEIGHT = 30,                          // Title bar heig
 #define MBASE(L) (MYPOS(L) + CAPOFF)
 
 // Create and add a MenuItem object to the menu array
-#define MENU_ITEM(V...) DWINUI::MenuItemsAdd(new MenuItemClass(V))
-#define EDIT_ITEM(V...) DWINUI::MenuItemsAdd(new MenuItemPtrClass(V))
+#define ADDMENUITEM(V...) DWINUI::MenuItemsAdd(new MenuItemClass(V))
+#define ADDMENUITEM_P(V...) DWINUI::MenuItemsAdd(new MenuItemPtrClass(V))
 
 typedef struct { uint16_t left, top, right, bottom; } rect_t;
 typedef struct { uint16_t x, y, w, h; } frame_rect_t;
@@ -227,11 +239,9 @@ namespace DWINUI {
 
   // Get font character width
   uint8_t fontWidth(uint8_t cfont);
-  inline uint8_t fontWidth() { return fontWidth(font); };
 
   // Get font character height
   uint8_t fontHeight(uint8_t cfont);
-  inline uint8_t fontHeight() { return fontHeight(font); };
 
   // Get screen x coordinates from text column
   uint16_t ColToX(uint8_t col);
@@ -449,14 +459,6 @@ namespace DWINUI {
   }
   inline void Draw_CenteredString(uint16_t y, FSTR_P title) {
     Draw_CenteredString(false, font, textcolor, backcolor, y, title);
-  }
-
-  // Draw a box
-  //  mode: 0=frame, 1=fill, 2=XOR fill
-  //  color: Rectangle color
-  //  frame: Box coordinates and size
-  inline void Draw_Box(uint8_t mode, uint16_t color, frame_rect_t frame) {
-    DWIN_Draw_Box(mode, color, frame.x, frame.y, frame.w, frame.h);
   }
 
   // Draw a circle

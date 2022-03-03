@@ -79,9 +79,11 @@ void GcodeSuite::M81() {
 
   print_job_timer.stop();
 
-  #if BOTH(HAS_FAN, PROBING_FANS_OFF)
-    thermalManager.fans_paused = false;
-    ZERO(thermalManager.saved_fan_speed);
+  #if HAS_FAN
+    #if ENABLED(PROBING_FANS_OFF)
+      thermalManager.fans_paused = false;
+      ZERO(thermalManager.saved_fan_speed);
+    #endif
   #endif
 
   safe_delay(1000); // Wait 1 second before switching off
@@ -117,4 +119,6 @@ void GcodeSuite::M81() {
   #elif ENABLED(PSU_CONTROL)
     powerManager.power_off_soon();
   #endif
+
+  LCD_MESSAGE_F(MACHINE_NAME " " STR_OFF ".");
 }

@@ -43,7 +43,6 @@ LockScreenClass lockScreen;
 
 uint8_t LockScreenClass::lock_pos = 0;
 bool LockScreenClass::unlocked = false;
-uint8_t LockScreenClass::rprocess = 0;
 
 void LockScreenClass::init() {
   lock_pos = 0;

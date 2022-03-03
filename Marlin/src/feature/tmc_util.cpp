@@ -421,10 +421,12 @@
         if (monitor_tmc_driver(stepperI, need_update_error_counters, need_debug_reporting))
           step_current_down(stepperI);
       #endif
+
       #if AXIS_IS_TMC(J)
         if (monitor_tmc_driver(stepperJ, need_update_error_counters, need_debug_reporting))
           step_current_down(stepperJ);
       #endif
+
       #if AXIS_IS_TMC(K)
         if (monitor_tmc_driver(stepperK, need_update_error_counters, need_debug_reporting))
           step_current_down(stepperK);
@@ -470,8 +472,12 @@
     void tmc_set_report_interval(const uint16_t update_interval) {
       if ((report_tmc_status_interval = update_interval))
         SERIAL_ECHOLNPGM("axis:pwm_scale"
-          TERN_(HAS_STEALTHCHOP, "/curr_scale")
-          TERN_(HAS_STALLGUARD, "/mech_load")
+          #if HAS_STEALTHCHOP
+            "/curr_scale"
+          #endif
+          #if HAS_STALLGUARD
+            "/mech_load"
+          #endif
           "|flags|warncount"
         );
     }

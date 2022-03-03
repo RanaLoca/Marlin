@@ -38,11 +38,10 @@ private:
   static bool unlocked;
   static uint8_t lock_pos;
 public:
-  static uint8_t rprocess;
   static void init();
   static void onEncoder(EncoderState encoder_diffState);
   static void draw();
-  static bool isUnlocked() { return unlocked; }
+  static inline bool isUnlocked() { return unlocked; }
 };
 
 extern LockScreenClass lockScreen;
