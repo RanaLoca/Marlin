@@ -1273,17 +1273,17 @@
 //#define LCD_BACKLIGHT_TIMEOUT 30 // (s) Timeout before turning off the backlight
 
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
-  //#define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
+  #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
   #if ENABLED(PROBE_OFFSET_WIZARD)
     /**
      * Enable to init the Probe Z-Offset when starting the Wizard.
      * Use a height slightly above the estimated nozzle-to-probe Z offset.
      * For example, with an offset of -5, consider a starting height of -4.
      */
-    //#define PROBE_OFFSET_WIZARD_START_Z -4.0
+    #define PROBE_OFFSET_WIZARD_START_Z -6.0
 
     // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
-    //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
+    #define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
   #endif
 #endif
 
@@ -1320,7 +1320,7 @@
 #endif // HAS_MARLINUI_MENU
 
 #if ANY(HAS_DISPLAY, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI)
-  //#define SOUND_MENU_ITEM   // Add a mute option to the LCD menu
+  #define SOUND_MENU_ITEM   // Add a mute option to the LCD menu
 #endif
 
 #if EITHER(HAS_DISPLAY, DWIN_CREALITY_LCD_ENHANCED)
@@ -1385,11 +1385,11 @@
   #endif
 
   #if EITHER(HAS_MARLINUI_U8GLIB, EXTENSIBLE_UI)
-    //#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
+    #define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
   #endif
 
   #if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-    //#define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
+    #define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
     #if ENABLED(LCD_PROGRESS_BAR)
       #define PROGRESS_BAR_BAR_TIME 2000  // (ms) Amount of time to show the bar
       #define PROGRESS_BAR_MSG_TIME 3000  // (ms) Amount of time to show the status message
@@ -3964,7 +3964,7 @@
  *
  * Implement M486 to allow Marlin to skip objects
  */
-//#define CANCEL_OBJECTS
+#define CANCEL_OBJECTS
 #if ENABLED(CANCEL_OBJECTS)
   #define CANCEL_OBJECTS_REPORTING // Emit the current object as a status message
 #endif
